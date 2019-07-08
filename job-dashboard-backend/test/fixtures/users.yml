@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  nickname: MyString
+  goal: MyText
+
+two:
+  username: MyString
+  nickname: MyString
+  goal: MyText

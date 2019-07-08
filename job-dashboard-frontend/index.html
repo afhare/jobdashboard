@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Job Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h2>My Job Dashboard</h2>
+    </header>
+
+    <main>
+      <section id="login">
+        <div id="login-screen">
+          <form id="username-form">
+            <p>Enter your username below:</p>
+            <input id="username" type="text">
+            <input type="submit">
+          </form>
+        </div>
+      </section>
+
+      <section id="dashboard">
+        <div id="resume-scratchpad">
+          <label for="scratchpad-list">My Jobsearch Scratchpad:</label>
+          <ul id="scratchpad-list">
+            <li><input id="scratchpad1" type="text"></li>
+            <li><input id="scratchpad2" type="text"></li>
+            <li><input id="scratchpad3" type="text"></li>
+          </ul> 
+        </div>
+
+        <div id="job-list">
+            <label for="ul-job-list">My Job List:</label>
+            <ul id="ul-job-list">
+            </ul>
+        </div>
+
+        <p><button id="new-job-button">Add a job to your search list!</button></p>
+        
+        <div id="new-job-container">
+          <form id="new-job-form">
+            <p><label for="new-job-company">Company:</label>
+            <input id="new-job-company" type="text"></p>
+                
+            <p><label for="new-job-title">Title:</label>
+            <input id="new-job-title" type="text"></p>
+                
+            <p><label for="new-job-description">Description:</label>
+            <textarea placeholder="Job description here" rows="5" cols="50"></textarea></p>
+                
+            <p><label>Found your dream job?</label></p>
+            <input type="checkbox" name="dream-job" id="dream-job"><label for="dream-job">Yes!</label></p>
+
+            <p><label for="new-job-status">Application Status:</label></p>
+            <p><select id="new-job-status" multiple>
+              <option value="watching">Watching</option>
+              <option value="applied">Applied</option>
+              <option value="interviewing">Interviewing</option>
+              <option value="awaiting-response">Awaiting Response</option>
+              <option value="offer-received">Offer Received</option>
+              <option value="offer-negotiating">Offer Negotiating</option>
+              <option value="offer-accepted">Offer Accepted</option>
+              <option value="offer-declined">Offer Declined</option>
+              </select></p>
+
+            <p><label for="new-job-posted-date">Date Posted:</label>
+            <input id="new-job-posted-date" type="date"></p>
+
+            <p><label for="new-job-deadline-date">Submission Deadline:</label>
+            <input id="new-job-deadline-date" type="date"></p>
+
+            <p><label for="new-job-applied-date">Applied Date:</label>
+            <input id="new-job-applied-date" type="date"></p>
+
+            <p><label for="new-job-interview-date">Interview Date/Time:</label>
+            <input id="new-job-interview-date" type="datetime-local"></p>
+
+            <p><label for="new-job-source">Source:</label>
+            <input id="new-job-source" type="text"></p>
+
+            <p><label for="new-job-url">Link to posting:</label>
+            <input id="new-job-url" type="url"></p>
+                
+            <input type="hidden" id="user_id" data-id="1">
+            <input type="submit">
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="./src/login.js"></script>
+    <script src="./src/DOMManipulation.js"></script>
+    <script src="./src/index.js"></script>
+  </body>
+</html>
+
+
+
