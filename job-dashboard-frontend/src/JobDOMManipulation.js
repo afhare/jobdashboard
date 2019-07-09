@@ -1,27 +1,42 @@
-function renderDashboardPage(userData){
-  console.log(userData);
-  let userId = userData.id
-  fetchJobs(userId);
+function fetchJobs(userData){
+    fetch('http://localhost:3000/jobs').then(response=>response.json()).then(jobData=> {renderJobs(jobData, userData)})
 }
 
-function fetchJobs(userId){
-    fetch('http://localhost:3000/jobs').then(response=>response.json()).then(jobData=> {renderJobs(jobData, userId)})
-}
-
-function renderJobs(jobData, userId){
-    let data = jobData.filter((job)=> job.user_id === userId)
+function renderJobs(jobData, userData){
+    let data = jobData.filter((job)=> job.user_id === userData.id)
     data.forEach(index => {renderSingleJob(index)})
 }
 
 function renderSingleJob(index){
     const ulJobList = document.querySelector('#ul-job-list');
+    
     const jobListLi = document.createElement('li')
     jobListLi.textContent = `${index.company} - ${index.title} `
-    jobListLi.dataset.id = `${index.id}`
+    jobListLi.dataset.id = index.id
+
+    const jobDetails = document.createElement('section')
+    jobDetails.id = 'job-details'
+    jobDetails.dataset.id = index.id
+    
     const expandButton = document.createElement('button')
     expandButton.className = 'expand'
+    expandButton.id = 'expand-details'
     expandButton.textContent = '+'
-    jobListLi.appendChild(expandButton)
+    expandButton.dataset.id = index.id
+    
+    const jobDescP = document.createElement('p');
+    jobDescP.textContent = index.description;
+    
+    const jobStatus = document.createElement('h5')
+    jobStatus.textContent = index.status;
+    
+    const dreamJob = document.createElement('p');
+    if (index.dream_job === true){
+      dreamJob.textContent = `Dream Job Status: ${String.fromCodePoint('0x1F31F')}`
+    }
+    jobDetails.append(jobDescP, jobStatus, dreamJob)
+    jobListLi.append(expandButton, jobDetails)
+    jobDetails.style.display = 'none'
     ulJobList.insertAdjacentElement('beforeend',jobListLi)
 }
 
@@ -43,19 +58,37 @@ function handleJobFormSubmit(event){
     const jobSource = document.getElementById('new-job-source')
     const jobDeadline = document.getElementById('new-job-deadline-date')
     const jobUrl = document.getElementById('new-job-url')
+    const dreamJobStatus = document.getElementById('dream-job')
 
     const company = companyNameInput.value;
     const title = jobTitleInput.value;
     const description = jobDescInput.value;
-    const applied_date = jobAppDate.value;
-    const posted_date = jobPostDate.value;
-    const interview_date = jobIntvDate.value;
+    if (jobAppDate.value){
+      const applied_date = jobAppDate.value;
+    }else{
+      applied_date = null
+    }
+    if (jobPostDate.value){
+      const posted_date = jobPostDate.value;
+    }else{
+      posted_date = null
+    }
+    if (jobIntvDate.value){
+      const interview_date = jobIntvDate.value;
+    }else{
+      interview_date = null
+    }
     const source = jobSource.value;
     const deadline = jobDeadline.value;
     const url = jobUrl.value;
+    const user_id = document.querySelector('#new-job-form').dataset.id
 
-    const status = []
-    jobAppStatus.value.forEach(state => {status.push(state)});
+    let dream_job = false;
+    if(dreamJobStatus.value === "on"){
+      dream_job = true;
+    }
+
+    const status = jobAppStatus.value;
 
     companyNameInput.value = '';
     jobTitleInput.value = '';
@@ -67,19 +100,19 @@ function handleJobFormSubmit(event){
     jobDeadline.value = '';
     jobUrl.value='';
 
-    return {company, title, description, applied_date, posted_date, interview_date, source, deadline, url};
+    return {company, title, description, applied_date, posted_date, interview_date, source, deadline, url, user_id, dream_job};
   };
   
-  function postNewToy(newToy){
+  function postNewJob(newJob){
     const reqObj = {
       method: 'POST',
       headers: {
         'Content-Type':'application/json',
         'Accept':'application/json'
       },
-      body: JSON.stringify(newToy)
+      body: JSON.stringify(newJob)
     };
   
-    fetch('http://localhost:3000/toys', reqObj).then(response=>response.json()).then(data=>
-    renderNewToy(data))
+    fetch('http://localhost:3000/jobs', reqObj).then(response=>response.json()).then(data=>
+    renderSingleJob(data))
   };

@@ -22,6 +22,8 @@
       </section>
 
       <section id="dashboard">
+        <h3 id="welcome-greeting"></h3>
+        <h4 id="user-goal"></h4>
         <div id="resume-scratchpad">
           <label for="scratchpad-list">My Jobsearch Scratchpad:</label>
           <ul id="scratchpad-list">
@@ -48,13 +50,13 @@
             <input id="new-job-title" type="text"></p>
                 
             <p><label for="new-job-description">Description:</label>
-            <textarea placeholder="Job description here" rows="5" cols="50"></textarea></p>
+            <textarea id="new-job-description" placeholder="Job description here" rows="5" cols="50"></textarea></p>
                 
             <p><label>Found your dream job?</label></p>
             <input type="checkbox" name="dream-job" id="dream-job"><label for="dream-job">Yes!</label></p>
 
             <p><label for="new-job-status">Application Status:</label></p>
-            <p><select id="new-job-status" multiple>
+            <p><select id="new-job-status">
               <option value="watching">Watching</option>
               <option value="applied">Applied</option>
               <option value="interviewing">Interviewing</option>
@@ -91,7 +93,8 @@
     </main>
 
     <script src="./src/login.js"></script>
-    <script src="./src/DOMManipulation.js"></script>
+    <script src="./src/JobDOMManipulation.js"></script>
+    <script src="./src/userInfoManipulation.js"></script>
     <script src="./src/index.js"></script>
   </body>
 </html>
