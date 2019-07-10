@@ -5,13 +5,9 @@ class CreateJobs < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :status
       t.text :description
-      t.date :applied_date
-      t.datetime :interview_date
-      t.date :deadline
-      t.date :date_posted
       t.string :source
       t.string :url
-      
+      t.boolean :dream_job
       t.timestamps
     end
   end
