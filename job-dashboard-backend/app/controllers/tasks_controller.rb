@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
     def index
         tasks = Task.all
-        render json: tasks
+        render json: tasks, include: [:job => {:only =>[:company, :title]}]
     end
 
     def create
         p params
         task = Task.create(taskparams)
-        render json: task
+        render json: task, include: [:job => {:only =>[:company, :title]}]
     end
 
     def destroy

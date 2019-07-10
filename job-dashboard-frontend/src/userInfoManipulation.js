@@ -30,7 +30,10 @@ function renderDashboardPage(userData){
   }
 
   document.querySelector('#new-job-form').dataset.id = userData.id;
+  document.querySelector('#new-job-form').querySelector('#user_id').dataset.id = userData.id;
+  document.querySelector('#new-task-form').querySelector('#taskUserId').dataset.id = userData.id;
   fetchJobs(userData);
+  fetchTasks(userData);
 }
 
  // function editNameInput(event){

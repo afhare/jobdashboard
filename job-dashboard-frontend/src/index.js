@@ -8,6 +8,8 @@ const nameEditButton = document.querySelector('#name-edit')
 const nameSaveButton = document.querySelector('#save-name-edit')
 const jobList = document.querySelector('#job-list')
 let displayDetails = false
+const taskForm = document.querySelector('#new-task-form')
+const taskList = document.querySelector('#ul-task-list')
 
 document.addEventListener('DOMContentLoaded',()=>{
     logIn();
@@ -52,6 +54,19 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         }
     )
+
+    taskForm.addEventListener('submit', (event)=>{
+        handleNewTaskSubmit(event);
+    })
+
+    taskList.addEventListener('click', (event)=>{
+        if (event.target.id === 'delete-task'){
+            handleTaskDelete(event)
+        }
+        else if (event.target.id === 'complete-task'){
+            handleTaskComplete(event)
+        }
+    })
 
     // if (nameEditButton){
     //     nameEditButton.addEventListener('click', (event)=>{
