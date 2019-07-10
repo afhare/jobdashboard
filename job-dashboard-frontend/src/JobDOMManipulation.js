@@ -48,13 +48,6 @@ function renderSingleJob(index){
     updateJobTitle.type = 'text'
     updateJobTitle.id = 'update-job-title'
 
-    const updateJobDescLabel = document.createElement('label')
-    updateJobDescLabel.for = 'update-job-description'
-    updateJobDescLabel.textContent = "Updated Job Description: "
-
-    const updateJobDesc = document.createElement('textarea')
-    updateJobDesc.id = 'update-job-description'
-
     const updateJobStatusLabel = document.createElement('label')
     updateJobStatusLabel.for = "update-job-status"
     updateJobStatusLabel.textContent = "Updated Application Status:"
@@ -74,7 +67,7 @@ function renderSingleJob(index){
       updateStatus.append(statusSelect)
     })
 
-    editForm.append(updateJobTitleLabel, updateJobTitle, updateJobDescLabel, updateJobDesc, updateJobStatusLabel, updateStatus, saveEditBtn)
+    editForm.append(updateJobTitleLabel, updateJobTitle, updateJobStatusLabel, updateStatus, saveEditBtn)
     editContainer.appendChild(editForm)
     editContainer.style.display = 'none'
 //edit form ends
@@ -108,6 +101,12 @@ function renderSingleJob(index){
     jobListLi.append(expandButton, jobDetails, deleteJobButton)
     jobDetails.style.display = 'none'
     ulJobList.insertAdjacentElement('beforeend',jobListLi)
+
+    const taskSelection = document.querySelector('#new-task-form').querySelector('#new-task-job')
+    const taskJobSelect = document.createElement('option')
+    taskJobSelect.value = `${index.id}`
+    taskJobSelect.textContent = `${index.company} - ${index.title}`
+    taskSelection.append(taskJobSelect)
 }
 
 
@@ -181,17 +180,14 @@ function handleJobFormSubmit(event){
 
   function grabJobUpdateData(event){
     const updatedJobTitleField = event.target.parentElement.querySelector('#update-job-title')
-    const updatedJobDescField = event.target.parentElement.querySelector('#update-job-description')
     const updatedJobStatusSelect = event.target.parentElement.querySelector('#update-job-status')
     title = updatedJobTitleField.value;
-    description = updatedJobDescField.value;
     status = updatedJobStatusSelect.value;
     
     updatedJobTitleField.value="";
-    updatedJobDescField.value='';
     updatedJobStatusSelect.value='';
 
-    return {title, description, status}
+    return {title, status}
     
   }
 
@@ -209,7 +205,10 @@ function handleJobFormSubmit(event){
   }
 
 function renderUpdateJob(event, jobData){
-  const updateThisLi = event.target.parentElement.parentElement.parentElement.parentElement
+  let updateThisLi = event.target.parentElement.parentElement.parentElement.parentElement
 
-  console.log(updateThisLi, jobData)
+  updateThisLi.textContent = `${jobData.company} - ${jobData.title} `
+  let detailsSection = updateThisLi.querySelector('#job-details')
+  detailsSection.firstElementChild.nextElementSibling.textContent = `Application Status: ${jobData.status}`
+
 }

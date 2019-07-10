@@ -39,6 +39,24 @@
             </ul>
         </div>
 
+        <div id="task-list">
+            <label for="ul-task-list">To-do Tasks:</label>
+            <ul id="ul-task-list">
+            </ul>
+        </div>
+        <div id="new-task-container">
+            <label for="new-task-form">Create a New Task:</label>
+            <form id="new-task-form">
+                <p><label for="new-task-activity">Task:</label>
+                  <input id="new-task-activity" type="text" placeholder="Enter a brief description of your task here"></p>
+                  <select id="new-task-job"></select>
+                  <p><label for="new-task-due-date">Due By:</label>
+                  <input type="date" id="new-task-due-date"></p>
+                  <input type="hidden" id="taskUserId">
+                  <input type="submit">
+            </form>
+        </div>
+
         <p><button id="new-job-button">Add a job to your search list!</button></p>
         
         <div id="new-job-container">
@@ -73,7 +91,7 @@
             <p><label for="new-job-url">Link to posting:</label>
             <input id="new-job-url" type="url"></p>
                 
-            <input type="hidden" id="user_id" data-id="1">
+            <input type="hidden" id="user_id">
             <input type="submit">
           </form>
         </div>
@@ -83,6 +101,7 @@
     <script src="./src/login.js"></script>
     <script src="./src/JobDOMManipulation.js"></script>
     <script src="./src/userInfoManipulation.js"></script>
+    <script src="./src/taskDOMManipulation.js"></script>
     <script src="./src/index.js"></script>
   </body>
 </html>
