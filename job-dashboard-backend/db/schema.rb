@@ -10,24 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_150230) do
+ActiveRecord::Schema.define(version: 2019_07_10_143911) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "company"
     t.string "title"
     t.string "status"
     t.text "description"
-    t.date "applied_date"
-    t.datetime "interview_date"
-    t.date "deadline"
-    t.date "date_posted"
     t.string "source"
     t.string "url"
+    t.boolean "dream_job"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.boolean "dream_job"
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "activity"
+    t.integer "user_id"
+    t.integer "job_id"
+    t.date "due_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_tasks_on_job_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

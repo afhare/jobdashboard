@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activity: MyString
+  user: one
+  job: one
+  due: 2019-07-10
+
+two:
+  activity: MyString
+  user: two
+  job: two
+  due: 2019-07-10
