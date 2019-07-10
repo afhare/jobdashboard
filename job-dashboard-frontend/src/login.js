@@ -35,6 +35,7 @@ function logIn(){
   loggedIn = !loggedIn
         if (loggedIn){
             dashboard.style.display = 'block'
+            document.querySelector('#new-job-container').style.display = 'none'
             usernameForm.style.display = 'none'
         } else{
             dashboard.style.display = 'none'

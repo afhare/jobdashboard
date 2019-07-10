@@ -1,7 +1,9 @@
-let addJob = true
+let displayEdit = false
+let addJob = false
 const addBtn = document.querySelector('#new-job-button')
 const userForm = document.querySelector('#username-form')
 const jobForm = document.querySelector('#new-job-form')
+const jobContainer = document.querySelector('#new-job-container')
 const nameEditButton = document.querySelector('#name-edit')
 const nameSaveButton = document.querySelector('#save-name-edit')
 const jobList = document.querySelector('#job-list')
@@ -17,9 +19,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     addBtn.addEventListener('click', () => {
         addJob = !addJob
         if (addJob) {
-          jobForm.style.display = 'block'
+          jobContainer.style.display = 'block'
         } else {
-          jobForm.style.display = 'none'
+          jobContainer.style.display = 'none'
         }
     })
 
@@ -28,13 +30,28 @@ document.addEventListener('DOMContentLoaded',()=>{
     })
 
     jobList.addEventListener('click', (event) => {
-        displayDetails = !displayDetails
-        if (displayDetails){
-            event.target.nextSibling.style.display = 'block'
-        } else {
-            event.target.nextSibling.style.display = 'none'
+        if (event.target.id === 'expand-details'){
+            displayDetails = !displayDetails
+            if (displayDetails){
+                event.target.nextSibling.style.display = 'block'
+            } else {
+                event.target.nextSibling.style.display = 'none'
+            }
+        } else if (event.target.id === 'delete-job'){
+            handleDeleteJob(event)
+        } else if (event.target.id === 'edit-details'){
+            displayEdit = !displayEdit
+            if (displayEdit){
+                event.target.nextSibling.style.display = 'block'
+            }else{
+                event.target.nextSibling.style.display = 'none'
+                }
+        } else if(event.target.id === 'save-job-edit'){
+            handleJobEditSubmit(event)
         }
-    })
+
+        }
+    )
 
     // if (nameEditButton){
     //     nameEditButton.addEventListener('click', (event)=>{
