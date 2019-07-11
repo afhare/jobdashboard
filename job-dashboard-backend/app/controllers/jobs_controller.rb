@@ -26,6 +26,6 @@ class JobsController < ApplicationController
     private
 
     def jobparams
-        params.require("job").permit("company", "title", "description", "source", "url", "user_id", "dream_job", "id")
+        params.require("job").permit("company", "title", "description", "source", "url", "user_id", "dream_job", "id", "status")
     end
 end

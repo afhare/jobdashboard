@@ -10,6 +10,11 @@ const jobList = document.querySelector('#job-list')
 let displayDetails = false
 const taskForm = document.querySelector('#new-task-form')
 const taskList = document.querySelector('#ul-task-list')
+let showTaskForm = document.querySelector('#new-task-button')
+let taskContainer = document.querySelector('#new-task-container')
+let showTask = false
+let goalForm = document.querySelector('#edit-goal-form')
+let noteForm = document.querySelector('#edit-scratchpad-form')
 
 document.addEventListener('DOMContentLoaded',()=>{
     logIn();
@@ -24,6 +29,15 @@ document.addEventListener('DOMContentLoaded',()=>{
           jobContainer.style.display = 'block'
         } else {
           jobContainer.style.display = 'none'
+        }
+    })
+
+    showTaskForm.addEventListener('click', () => {
+        showTask = !showTask
+        if (showTask) {
+          taskContainer.style.display = 'block'
+        } else {
+          taskContainer.style.display = 'none'
         }
     })
 
@@ -67,16 +81,11 @@ document.addEventListener('DOMContentLoaded',()=>{
             handleTaskComplete(event)
         }
     })
+    goalForm.addEventListener('submit',(event)=>{
+        handleUpdateGoal(event);
+    })
 
-    // if (nameEditButton){
-    //     nameEditButton.addEventListener('click', (event)=>{
-    //         debugger;
-    //         console.log(event.target)
-    //         // editNameInput(event);
-    //     })
-
-    //     nameSaveButton.addEventListener('click', (event)=>{
-    //         updateNameInput(event);
-    //     })
-    // }
+    noteForm.addEventListener('submit',(event)=>{
+        handleUpdateScratchpad(event);
+    })
 })

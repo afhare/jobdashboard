@@ -7,9 +7,9 @@ Job.destroy_all
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-alex = User.create(username: "fitz" , nickname:"Alex", goal:"Build this project!")
-ana = User.create(username: "bananarama", nickname:"Ana", goal:"Find a job")
-nate = User.create(username: "notoriousNTG" , nickname: "Nate", goal:"Find a job")
+alex = User.create(username: "fitz" , nickname:"Alex", goal:"Build this project!", scratchpad: "Testvalue here")
+ana = User.create(username: "bananarama", nickname:"Ana", goal:"Find a job", scratchpad: "Testvalue here")
+nate = User.create(username: "notoriousNTG" , nickname: "Nate", goal:"Find a job", scratchpad: "Testvalue here")
 
 Job.create(company:"Nava", title:"Software Engineer - Remote", status:"watching", dream_job: true, description:"Responsibilities: Collaborate with the product team, government stakeholders, and other contractors to build new systems and make improvements to existing systems. Design and spec out major functionality. Participate in planning and breaking down requirements into tasks. Maintain production systems, handle on-call duties, and systematically debug and resolve issues when they occur. Review code and give feedback on technical specs. Make improvements by proposing new tools and practices.", source:"Google", url:"https://jobs.lever.co/nava/c280510a-e3ed-4b6c-b64f-8ce82801da2b", user: alex)
 

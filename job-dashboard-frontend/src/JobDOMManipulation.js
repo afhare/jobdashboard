@@ -97,10 +97,10 @@ function renderSingleJob(index){
       dreamJob.textContent = `Dream Job Status: ${String.fromCodePoint('0x1F937')}`
     }
 
-    jobDetails.append(jobDescP, jobStatus, dreamJob, editJobButton,editContainer)
-    jobListLi.append(expandButton, jobDetails, deleteJobButton)
+    jobDetails.append(jobDescP, jobStatus, dreamJob, editJobButton,editContainer,deleteJobButton)
+    jobListLi.append(expandButton, jobDetails)
     jobDetails.style.display = 'none'
-    ulJobList.insertAdjacentElement('beforeend',jobListLi)
+    ulJobList.insertAdjacentElement('afterbegin',jobListLi)
 
     const taskSelection = document.querySelector('#new-task-form').querySelector('#new-task-job')
     const taskJobSelect = document.createElement('option')
@@ -145,7 +145,7 @@ function handleJobFormSubmit(event){
     jobSource.value = '';
     jobUrl.value='';
 
-    return {company, title, description, source, url, user_id, dream_job};
+    return {company, title, description, source, status, url, user_id, dream_job};
   };
   
   function postNewJob(newJob){
@@ -169,7 +169,7 @@ function handleJobFormSubmit(event){
   }
 
   function removeJob(event){
-    event.target.parentElement.remove();
+    event.target.parentElement.parentElement.remove();
   }
 
   function handleJobEditSubmit(event){
@@ -185,7 +185,6 @@ function handleJobFormSubmit(event){
     status = updatedJobStatusSelect.value;
     
     updatedJobTitleField.value="";
-    updatedJobStatusSelect.value='';
 
     return {title, status}
     
@@ -206,9 +205,6 @@ function handleJobFormSubmit(event){
 
 function renderUpdateJob(event, jobData){
   let updateThisLi = event.target.parentElement.parentElement.parentElement.parentElement
-
-  updateThisLi.textContent = `${jobData.company} - ${jobData.title} `
-  let detailsSection = updateThisLi.querySelector('#job-details')
-  detailsSection.firstElementChild.nextElementSibling.textContent = `Application Status: ${jobData.status}`
-
+  updateThisLi.remove();
+  renderSingleJob(jobData);
 }
