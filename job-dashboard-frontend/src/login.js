@@ -1,6 +1,6 @@
 const dashboard = document.querySelector('#dashboard')
 let loggedIn = true
-const usernameForm = document.querySelector('#username-form')
+const logInSection = document.querySelector('#login')
 
 function handleUserLogin(event){
   event.preventDefault();
@@ -12,10 +12,13 @@ function grabUserFormData(){
   const user = document.querySelector('#username')
   const username = user.value
   user.value ='';
-  return {username}
+  const nameInput = document.querySelector('#nickname')
+  const nickname = nameInput.value
+  nameInput.value ='';
+  return {username, nickname}
 }
 
-function logInUser(currentUser){
+function logInUser(currentUser) {
   let loginObj = {
     method: 'POST',
     headers: {
@@ -25,20 +28,21 @@ function logInUser(currentUser){
     body: JSON.stringify(currentUser)
   }
 
-  fetch('http://localhost:3000/users/login', loginObj).then(response=> response.json()).then(data=>{
+  fetch('http://localhost:3000/users/login', loginObj).then(response => response.json()).then(data => {
       logIn();
       renderDashboardPage(data)})
 }
 
 
-function logIn(){
+function logIn() {
   loggedIn = !loggedIn
-        if (loggedIn){
-            dashboard.style.display = 'block'
-            document.querySelector('#new-job-container').style.display = 'none'
-            usernameForm.style.display = 'none'
-        } else{
-            dashboard.style.display = 'none'
-            usernameForm.style.display = 'block'
-        }
+  if (loggedIn) {
+    dashboard.style.display = 'block'
+    document.querySelector('#new-job-container').style.display = 'none'
+    document.querySelector('#new-task-container').style.display = 'none'
+    logInSection.style.display = 'none'
+  } else {
+    dashboard.style.display = 'none'
+    logInSection.style.display = 'flex'
+  }
 }

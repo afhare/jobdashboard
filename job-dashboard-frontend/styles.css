@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    background: #28536c;
+    font-family: 'Raleway', sans-serif;
+    line-height: 26pt;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#ffffff;
+    color: #032336;
+    margin: 5rem 23rem 0rem;
+    height: 2rem;
+    border-radius: 25px;
+    width: 20%;
+    padding: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    border: solid;
+    border-color:#032336;
+    border-width: 10px;
+}
+
+#login{
+    margin: 12rem;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background: #ffffff;
+    border-style: solid;
+    border-radius: 25px;
+    border-width: 2px;
+    box-shadow: 10px 14px #032336;
+    border-color: #779EB3;
+    color: #03303B
+}
+
+#dashboard{
+    box-shadow: 10px 14px #032336;
+    margin: 1rem;
+    background: #ffffff;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #779EB3;
+    color: #03303B;
+    border-radius: 25px;
+    padding: 3rem;
+}
+
+#dashboard>h3, #dashboard>h4{
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+#username, #nickname{
+  border-radius: 5px;
+  height: 2rem;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  margin: 3px;
+}
+
+#new-task-container, #new-job-container{
+    width: 50%;
+    font-family: 'Raleway', sans-serif;
+    padding: 3rem;
+}
+
+button, #edit-goal, #edit-scratchpad, .submit-button{
+    border-radius: 25px;
+    box-shadow: 3px 4px #032336;
+    height: 2rem;
+    width: 30%;
+}
