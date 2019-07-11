@@ -1,8 +1,18 @@
 body{
     margin: 0;
     background: #28536c;
-    font-family: 'Raleway', sans-serif;
+    font-family: sans-serif;
     line-height: 26pt;
+}
+
+@keyframes headermove{
+    0% {left:0px; top:0px;}
+    50% {left:500px;top:0px;}
+    100% {left:0px; top:0px;}
+}
+@-webkit-keyframes headermove{
+    0% {left:0px; top:0px;}
+    100% {left:500px; top:0px;}
 }
 
 header{
@@ -11,21 +21,26 @@ header{
     align-items: center;
     background:#ffffff;
     color: #032336;
-    margin: 5rem 23rem 0rem;
-    height: 2rem;
+    margin: 2rem 2rem;
+    position: relative;
+    width: 30%;
+    height: 5rem;
     border-radius: 25px;
-    width: 20%;
-    padding: 2rem;
     font-family: 'Montserrat', sans-serif;
-    border: solid;
-    border-color:#032336;
-    border-width: 10px;
+    border-bottom: solid;
+    border-bottom-color:#032336;
+    border-bottom-width:7px;
+    animation-name: headermove;
+    animation-duration: 5s;
+    -webkit-animation-name: headermove;
+    -webkit-animation-duration: 5s;
 }
 
 #login{
     margin: 12rem;
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 2rem;
     background: #ffffff;
     border-style: solid;
@@ -33,7 +48,8 @@ header{
     border-width: 2px;
     box-shadow: 10px 14px #032336;
     border-color: #779EB3;
-    color: #03303B
+    color: #03303B;
+    width: auto;
 }
 
 #dashboard{
@@ -62,15 +78,49 @@ header{
   margin: 3px;
 }
 
-#new-task-container, #new-job-container{
+#new-task-container{
     width: 50%;
     font-family: 'Raleway', sans-serif;
     padding: 3rem;
+    background-color:#28536c;
+    border-radius: 25px;
+    box-shadow: 7px 8px #779eb3;
+    color: #ffffff
+}
+
+#new-job-container{
+    width: 50%;
+    font-family: 'Raleway', sans-serif;
+    padding: 3rem;
+    background-color:#28536c;
+    border-radius: 25px;
+    box-shadow: 7px 8px #032336;
+    color: #ffffff
 }
 
 button, #edit-goal, #edit-scratchpad, .submit-button{
     border-radius: 25px;
     box-shadow: 3px 4px #032336;
     height: 2rem;
-    width: 30%;
+    width: auto;
+}
+
+li{
+    background-color:#FFFFFF;
+    border-radius: 25px;
+    box-shadow: 7px 8px #779EB3;
+    list-style-type: none;
+    padding: 10px 30px;
+    margin: 1rem;
+    width: auto;
+}
+
+.job-listing{
+    background-color:#FFFFFF;
+    border-radius: 25px;
+    box-shadow: 7px 8px #032336;
+    list-style-type: none;
+    padding: 10px 30px;
+    margin: 1rem;
+    width: auto;
 }
