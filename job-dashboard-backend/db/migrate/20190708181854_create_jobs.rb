@@ -5,6 +5,7 @@ class CreateJobs < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :status
       t.text :description
+      t.text :listing_notes
       t.string :source
       t.string :url
       t.boolean :dream_job

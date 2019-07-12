@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.references :job, foreign_key: true
       t.date :due_by
-
+      t.boolean :completed
       t.timestamps
     end
   end

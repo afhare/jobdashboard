@@ -1,8 +1,8 @@
 function renderDashboardPage(userData){
     const greeting = document.querySelector('#welcome-greeting')
-    greeting.textContent = `Welcome ${userData.nickname}! `
+    greeting.textContent = `${userData.nickname}! `
   if (userData.goal){
-    document.querySelector("#user-goal").textContent = `Today's goal: ${userData.goal}`
+    document.querySelector("#user-goal").textContent = userData.goal
   }else {
     document.querySelector("#user-goal").textContent = 'What is the goal of your search today?'
   }
@@ -19,12 +19,12 @@ function renderDashboardPage(userData){
   document.querySelector('#edit-scratchpad-form').dataset.id = userData.id
 
   const scratchpad = document.querySelector('#scratchpad-list')
-  const scratchpadLi = document.createElement('li')
-  scratchpadLi.id = 'scratchpad-li'
+  const scratchpadP = document.createElement('p')
+  scratchpadP.id = 'scratchpad-item'
   scratchpad.dataset.id = userData.id;
   if (userData.scratchpad){
-    scratchpadLi.textContent = userData.scratchpad
-    scratchpad.append(scratchpadLi)
+    scratchpadP.textContent = userData.scratchpad
+    scratchpad.append(scratchpadP)
   }
   const editScratchpadBtn = document.querySelector('#edit-scratchpad')
   editScratchpadBtn.dataset.id = userData.id
@@ -92,13 +92,13 @@ function postNewScratchpad(newScratchpad, event){
 }
 
 function renderUpdateScratchpad(userData){
-  if (document.querySelector('#scratchpad-li')) {
-    const scratchpadLiEl = document.querySelector('#scratchpad-li')
-    scratchpadLiEl.textContent = userData.scratchpad
+  if (document.querySelector('#scratchpad-item')) {
+    const scratchpadPEl = document.querySelector('#scratchpad-item')
+    scratchpadPEl.textContent = userData.scratchpad
   } else {
-    let scratchpadLiElem = document.createElement('li')
-    scratchpadLiElem.id = 'scratchpad-li'
-    scratchpadLiElem.textContent = userData.scratchpad
-    document.querySelector('#scratchpad-list').append(scratchpadLiElem)
+    let scratchpadPElem = document.createElement('p')
+    scratchpadPElem.id = 'scratchpad-item'
+    scratchpadPElem.textContent = userData.scratchpad
+    document.querySelector('#scratchpad-list').append(scratchpadPElem)
   }
 }
