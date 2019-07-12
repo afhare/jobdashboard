@@ -12,7 +12,6 @@
     <header>
       <h1> ⎻-⎼⎻- JobDash </h1>
     </header>
-
     <main>
       <section id="login">
         <div id="login-screen">
@@ -25,72 +24,79 @@
           </form>
         </div>
       </section>
-
+      
       <section id="dashboard">
-        <h3 id="welcome-greeting"></h3>
-        <h4 id="user-goal"></h4>
-        <form id='edit-goal-form'>
-          <label for='edit-goal-input'><strong>Create/Edit Today's Goal:</strong></label>
-          <input id='edit-goal-input' type="text">
-          <input type='submit' id='edit-goal'>
-        </form>
-        <div id="resume-scratchpad">
-          <label for="scratchpad-list"><strong>My Jobsearch Scratchpad:</strong></label>
-          <ul id="scratchpad-list">
-          </ul>
-          <form id='edit-scratchpad-form'>
-              <label for='edit-scratchpad-input'><strong>Add a Note to your Scratchpad:</strong></label>
-              <p><textarea id='edit-scratchpad-input'rows="5" cols="50"></textarea></p>
-              <input type='submit' id='edit-scratchpad'>
-            </form>
+          <section id="quote"></section>
+        <div class="greeting-container">
+          <section class="user-greeting">
+            <br>
+            <h1>Today's Goal:</h1>
+            <p><h2 id="user-goal"></h2></p>
+          </section>
+          <section class="user-greeting">
+            <br>
+            <p><h2>Welcome,</h2></p>
+            <h1 id="welcome-greeting"></h3>
+          </section>
+          <section class='user-greeting'>
+            <div id="resume-scratchpad">
+                <label for="scratchpad-list"><h2>My Jobsearch Scratchpad:</h2></label>
+                <div id="scratchpad-list">
+                </div>
+              </div>
+            </section>
         </div>
-
+        <br>
+        <hr width=50%>
+        <br>
+        <div class='all-container'>
+          <div class='row' id='row1'>
+            <label class='row-label'>My Dash:</label>
+              <p><button id="new-task-button">Add a task!</button></p>
+              <hr width=20%>
+              <p><button id="new-job-button">Add a job!</button></p>
+              <hr width=20%>
+              <p><button id="edit-goal-button">Update Today's Goal!</button></p>
+              <form id='edit-goal-form'>
+                <label for='edit-goal-input'><strong>Today's Goal:</strong></label>
+                <input id='edit-goal-input' type="text">
+                <input type='submit' id='edit-goal'>
+              </form>
+            <hr width=20%>
+            <p><button id="edit-scratchpad-button">Update Your Scratchpad!</button></p>
+            <form id='edit-scratchpad-form'>
+                <label for='edit-scratchpad-input'><strong>Add a Note to your Scratchpad:</strong></label>
+                <p><textarea id='edit-scratchpad-input'rows="8" cols="20"></textarea></p>
+                <input type='submit' id='edit-scratchpad'>
+            </form>
+          </div>
+          <div class='row' id='row2'>
         <div id="job-list">
-            <label for="ul-job-list">My Job List:</label>
+            <label for="ul-job-list" class='row-label'>My Job List:</label>
             <ul id="ul-job-list">
             </ul>
         </div>
-
-        <div id="task-list">
-            <label for="ul-task-list">My To-do List:</label>
-            <ul id="ul-task-list">
-            </ul>
-        </div>
-        
-        <p><button id="new-task-button">Add a task to your to-do list!</button></p>
-        
-        <div id="new-task-container">
-            <label for="new-task-form"><strong>Create a New Task:</strong></label>
-            <form id="new-task-form">
-                <p><label for="new-task-activity">Task:</label>
-                  <input id="new-task-activity" type="text" placeholder="Enter a brief description of your task here"></p>
-                  <label for="new-task-job">Select the job this task applies to:</label>
-                  <select id="new-task-job">
-                  </select>
-                  <p><label for="new-task-due-date">Due By:</label>
-                  <input type="date" id="new-task-due-date"></p>
-                  <input type="hidden" id="taskUserId">
-                  <input type="submit" class='submit-button'>
-            </form>
-        </div>
-
-        <p><button id="new-job-button">Add a job to your search list!</button></p>
-        
         <div id="new-job-container">
-            <label for="new-task-form"><strong>Create a new job:</strong></label>
+            <br>
+            <hr width=20%>
+            <br>
+            <label for="new-job-form"><strong>Create a new job:</strong></label>
           <form id="new-job-form">
-            <p><label for="new-job-company">Company:</label>
-            <input id="new-job-company" type="text"></p>
+            <p><label for="new-job-company">Company:</label></p>
+            <p><input id="new-job-company" type="text"></p>
                 
-            <p><label for="new-job-title">Title:</label>
-            <input id="new-job-title" type="text"></p>
+            <p><label for="new-job-title">Title:</label></p>
+            <p><input id="new-job-title" type="text"></p>
                 
-            <p><label for="new-job-description">Description:</label>
-            <textarea id="new-job-description" placeholder="Job description here" rows="5" cols="50"></textarea></p>
+            <p><label for="new-job-description">Description:</label></p>
+            <p><textarea id="new-job-description" placeholder="Job description here" rows="5" cols="50"></textarea></p>
                 
             <p><label>Found your dream job?</label></p>
-            <input type="checkbox" name="dream-job" id="dream-job"><label for="dream-job">Yes!</label></p>
+            <p><input type="checkbox" name="dream-job" id="dream-job"><label for="dream-job">Yes!</label></p>
 
+            <p><label for="new-listing-notes">Notes About This Listing:</label></p>
+            <p><textarea id="new-listing-notes" type="text" rows="3" cols="30"></textarea></p>
+            
             <p><label for="new-job-status">Application Status:</label></p>
             <p><select id="new-job-status">
               <option value="Watching">Watching</option>
@@ -103,16 +109,42 @@
               <option value="Offer-declined">Offer Declined</option>
               </select></p>
 
-            <p><label for="new-job-source">Source:</label>
-            <input id="new-job-source" type="text"></p>
+            <p><label for="new-job-source">Source:</label></p>
+            <p><input id="new-job-source" type="text"></p>
 
-            <p><label for="new-job-url">Link to posting:</label>
-            <input id="new-job-url" type="url"></p>
+            <p><label for="new-job-url">Link to posting:</label></p>
+            <p><input id="new-job-url" type="url"></p>
                 
             <input type="hidden" id="user_id">
-            <input type="submit" class='submit-button'>
+            <p><input type="submit" class='submit-button'></p>
           </form>
         </div>
+      </div>
+      <div class='row' id='row3'>
+        <div id="task-list">
+          <label for="ul-task-list" class='row-label'>My To-do List:</label>
+          <ul id="ul-task-list">
+          </ul>
+        </div>
+        <div id="new-task-container">
+            <br>
+            <hr width=20%>
+            <br>
+          <label for="new-task-form"><strong>Create a New Task:</strong></label>
+          <form id="new-task-form">
+            <p><label for="new-task-activity">Task:</label></p>
+            <p><input id="new-task-activity" type="text" placeholder="Enter a brief description of your task here"></p>
+            <label for="new-task-job">Select the job this task applies to:</label>
+            <p><select id="new-task-job">
+            </select></p>
+            <p><label for="new-task-due-date">Due By:</label></p>
+            <p><input type="date" id="new-task-due-date"></p>
+            <input type="hidden" id="taskUserId">
+            <p><input type="submit" class='submit-button'></p>
+          </form>
+        </div>
+      </div>
+      </div>
       </section>
     </main>
 

@@ -9,15 +9,26 @@ const nameSaveButton = document.querySelector('#save-name-edit')
 const jobList = document.querySelector('#job-list')
 let displayDetails = false
 const taskForm = document.querySelector('#new-task-form')
-const taskList = document.querySelector('#ul-task-list')
+const taskList = document.querySelector('#task-list')
 let showTaskForm = document.querySelector('#new-task-button')
 let taskContainer = document.querySelector('#new-task-container')
 let showTask = false
 let goalForm = document.querySelector('#edit-goal-form')
 let noteForm = document.querySelector('#edit-scratchpad-form')
+let displayGoalEdit = false;
+let editGoalBtn = document.querySelector('#edit-goal-button')
+let displayScratchpadEdit = false;
+let editScratchpadBtn = document.querySelector('#edit-scratchpad-button')
+let editScratchpadForm = document.querySelector('#edit-scratchpad-form')
 
 document.addEventListener('DOMContentLoaded',()=>{
     logIn();
+    
+    generateQuote();
+
+    document.querySelector('#quote').addEventListener('click', () => {
+        generateQuote();
+    })
     
     userForm.addEventListener('submit',(event)=>{
         handleUserLogin(event);
@@ -27,8 +38,10 @@ document.addEventListener('DOMContentLoaded',()=>{
         addJob = !addJob
         if (addJob) {
           jobContainer.style.display = 'block'
+          jobList.style.display = 'none'
         } else {
           jobContainer.style.display = 'none'
+          jobList.style.display = 'block'
         }
     })
 
@@ -36,12 +49,34 @@ document.addEventListener('DOMContentLoaded',()=>{
         showTask = !showTask
         if (showTask) {
           taskContainer.style.display = 'block'
+          taskList.style.display = 'none'
         } else {
           taskContainer.style.display = 'none'
+          taskList.style.display = 'block'
+        }
+    })
+
+    editGoalBtn.addEventListener('click', () => {
+        displayGoalEdit = !displayGoalEdit
+        if (displayGoalEdit) {
+            goalForm.style.display = 'block'
+        } else {
+            goalForm.style.display = 'none'
+        }
+    })
+
+    editScratchpadBtn.addEventListener('click', () => {
+        displayScratchpadEdit = !displayScratchpadEdit
+        if (displayScratchpadEdit) {
+            editScratchpadForm.style.display = 'block'
+        } else {
+            editScratchpadForm.style.display = 'none'
         }
     })
 
     jobForm.addEventListener('submit', (event)=>{
+        jobContainer.style.display = 'none'
+        jobList.style.display = 'block'
         handleJobFormSubmit(event);
     })
 
@@ -70,6 +105,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     )
 
     taskForm.addEventListener('submit', (event)=>{
+        taskContainer.style.display = 'none'
+        taskList.style.display = 'block'
         handleNewTaskSubmit(event);
     })
 

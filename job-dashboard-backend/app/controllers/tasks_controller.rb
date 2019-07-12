@@ -10,6 +10,12 @@ class TasksController < ApplicationController
         render json: task, include: [:job => {:only =>[:company, :title]}]
     end
 
+    def update
+        task = Task.find_by(id: params["id"])
+        task.update_attributes({completed: params["completed"]})
+        render json: task
+    end
+
     def destroy
         task = Task.find_by(id: params[:id])
         task.destroy
@@ -19,6 +25,6 @@ class TasksController < ApplicationController
     private
 
     def taskparams
-        params.require("task").permit("activity", "user_id", "job_id", "due_by")
+        params.require("task").permit("activity", "user_id", "job_id", "due_by", "completed")
     end
 end

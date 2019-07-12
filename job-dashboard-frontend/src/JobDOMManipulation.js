@@ -40,13 +40,14 @@ function renderSingleJob(index){
     saveEditBtn.dataset.id = index.id
     saveEditBtn.textContent = `${String.fromCodePoint('0x2712')} : Save Changes`
 
-    const updateJobTitleLabel = document.createElement('label')
-    updateJobTitleLabel.for = 'update-job-title'
-    updateJobTitleLabel.textContent = "Updated Job Title: "
+    const updateListingNoteLabel = document.createElement('label')
+    updateListingNoteLabel.for = 'update-listing-note'
+    updateListingNoteLabel.textContent = "Updated Note(s) About This Job: "
 
-    const updateJobTitle = document.createElement('input')
-    updateJobTitle.type = 'text'
-    updateJobTitle.id = 'update-job-title'
+    const updateListingNote = document.createElement('input')
+    updateListingNote.type = 'text'
+    updateListingNote.id = 'update-listing-notes'
+    updateListingNote.value = index.listing_notes;
 
     const updateJobStatusLabel = document.createElement('label')
     updateJobStatusLabel.for = "update-job-status"
@@ -67,7 +68,7 @@ function renderSingleJob(index){
       updateStatus.append(statusSelect)
     })
 
-    editForm.append(updateJobTitleLabel, updateJobTitle, updateJobStatusLabel, updateStatus, saveEditBtn)
+    editForm.append(updateListingNoteLabel, updateListingNote, updateJobStatusLabel, updateStatus, saveEditBtn)
     editContainer.appendChild(editForm)
     editContainer.style.display = 'none'
 //edit form ends
@@ -85,10 +86,19 @@ function renderSingleJob(index){
     deleteJobButton.dataset.id = index.id
 
     const jobDescP = document.createElement('p');
+    const jobDescH5 = document.createElement('h5')
+    jobDescH5.textContent = "Job Description : "
     jobDescP.textContent = index.description;
+
+    const listingNoteP = document.createElement('p');
+    const listingNoteH5 = document.createElement('h5')
+    listingNoteH5.textContent = "My Notes About This Listing : "
+    listingNoteP.textContent = index.listing_notes;
     
-    const jobStatus = document.createElement('h5')
-    jobStatus.textContent = `Application Status: ${index.status}`;
+    const jobStatus = document.createElement('p')
+    const jobStatusH5 = document.createElement('h5')
+    jobStatusH5.textContent = "Job Description : "
+    jobStatus.textContent = index.status;
     
     const dreamJob = document.createElement('p');
     if (index.dream_job === true){
@@ -97,7 +107,7 @@ function renderSingleJob(index){
       dreamJob.textContent = `Dream Job Status: ${String.fromCodePoint('0x1F937')}`
     }
 
-    jobDetails.append(jobDescP, jobStatus, dreamJob, editJobButton,editContainer,deleteJobButton)
+    jobDetails.append(jobDescH5, jobDescP, listingNoteH5,listingNoteP, jobStatusH5,jobStatus, dreamJob, editJobButton,editContainer,deleteJobButton)
     jobListLi.append(expandButton, jobDetails)
     jobDetails.style.display = 'none'
     ulJobList.insertAdjacentElement('afterbegin',jobListLi)
@@ -124,6 +134,7 @@ function handleJobFormSubmit(event){
     const jobSource = document.getElementById('new-job-source')
     const jobUrl = document.getElementById('new-job-url')
     const dreamJobStatus = document.getElementById('dream-job')
+    const listingNoteInput = document.getElementById('new-listing-notes')
 
     const company = companyNameInput.value;
     let title = jobTitleInput.value;
@@ -131,6 +142,7 @@ function handleJobFormSubmit(event){
     const source = jobSource.value;
     const url = jobUrl.value;
     const user_id = document.querySelector('#new-job-form').dataset.id
+    let listing_notes = listingNoteInput.value;
 
     let dream_job = false;
     if(dreamJobStatus.value === "on"){
@@ -144,8 +156,9 @@ function handleJobFormSubmit(event){
     jobDescInput.value ='';
     jobSource.value = '';
     jobUrl.value='';
+    listingNoteInput.value='';
 
-    return {company, title, description, source, status, url, user_id, dream_job};
+    return {company, title, description, source, status, url, user_id, dream_job, listing_notes};
   };
   
   function postNewJob(newJob){
@@ -179,14 +192,13 @@ function handleJobFormSubmit(event){
   }
 
   function grabJobUpdateData(event){
-    const updatedJobTitleField = event.target.parentElement.querySelector('#update-job-title')
+    const updatedListingNoteField = event.target.parentElement.querySelector('#update-listing-notes')
     const updatedJobStatusSelect = event.target.parentElement.querySelector('#update-job-status')
-    title = updatedJobTitleField.value;
-    status = updatedJobStatusSelect.value;
     
-    updatedJobTitleField.value="";
+    listing_notes = updatedListingNoteField.value;
+    status = updatedJobStatusSelect.value;
 
-    return {title, status}
+    return {listing_notes, status}
     
   }
 

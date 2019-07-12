@@ -1,18 +1,19 @@
 body{
     margin: 0;
     background: #28536c;
-    font-family: sans-serif;
+    font-family: 'Raleway', sans-serif;
     line-height: 26pt;
 }
 
 @keyframes headermove{
-    0% {left:0px; top:0px;}
-    50% {left:500px;top:0px;}
-    100% {left:0px; top:0px;}
+    0% {left:0%; top:0px;}
+    50% {left:65%;top:0px;}
+    100% {left:0%; top:0px;}
 }
 @-webkit-keyframes headermove{
-    0% {left:0px; top:0px;}
-    100% {left:500px; top:0px;}
+    0% {left:0%; top:0px;}
+    50% {left:65%;top:0px;}
+    100% {left:0%; top:0px;}
 }
 
 header{
@@ -21,10 +22,10 @@ header{
     align-items: center;
     background:#ffffff;
     color: #032336;
-    margin: 2rem 2rem;
+    margin: 2em 2em;
     position: relative;
     width: 30%;
-    height: 5rem;
+    height: 5em;
     border-radius: 25px;
     font-family: 'Montserrat', sans-serif;
     border-bottom: solid;
@@ -36,62 +37,135 @@ header{
     -webkit-animation-duration: 5s;
 }
 
-#login{
-    margin: 12rem;
+#quote{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    background:#ffffff;
+    color: #032336;
+    margin: 2em 2em;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12pt;
+    text-align: center;   
+}
+
+#login{
+    margin: 12em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
     background: #ffffff;
     border-style: solid;
     border-radius: 25px;
     border-width: 2px;
     box-shadow: 10px 14px #032336;
-    border-color: #779EB3;
+    border-color: rgba(119,158,179,100);
     color: #03303B;
     width: auto;
 }
 
 #dashboard{
     box-shadow: 10px 14px #032336;
-    margin: 1rem;
+    margin: 1em;
     background: #ffffff;
     border-style: solid;
     border-width: 4px;
-    border-color: #779EB3;
+    border-color: rgba(119,158,179,100);
     color: #03303B;
-    border-radius: 25px;
-    padding: 3rem;
+    border-radius: 25px; 
+    padding: 3em; 
 }
 
-#dashboard>h3, #dashboard>h4{
-    font-family: 'Montserrat', sans-serif;
+.greeting-container {
+    padding: 0;
+    margin: 0;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
-    justify-content: center;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.user-greeting{
+    background: #ffffff;
+    width: 20%;
+    height: 250px;
+    align-items: center;
+    align-content: center;
+    margin: 1em;
+    box-shadow: 10px 14px rgba(119,158,179,100);
+    border-style: solid;
+    border-width: 4px;
+    border-color: #28536c;
+    color: #03303B;
+    border-radius: 25px;
+    padding: 3em;
+    text-align: center;
+}
+
+#welcome-greeting{
+    font-size: 30pt;
 }
 
 #username, #nickname{
   border-radius: 5px;
-  height: 2rem;
+  height: 2em;
   font-size: 18px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 3px;
 }
 
-#new-task-container{
-    width: 50%;
-    font-family: 'Raleway', sans-serif;
-    padding: 3rem;
-    background-color:#28536c;
-    border-radius: 25px;
-    box-shadow: 7px 8px #779eb3;
-    color: #ffffff
+.all-container{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
 }
 
-#new-job-container{
-    width: 50%;
-    font-family: 'Raleway', sans-serif;
-    padding: 3rem;
+.all-container> .row{
+    width: auto;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    line-height: 30pt;
+    background: rgba(119,158,179,.5);
+    border-radius: 25px;
+    box-shadow: 7px 8px #032336;
+}
+
+#row1 {
+    width: 190px;
+}
+#row2 {
+    width: 450px;
+}
+#row3 {
+    width: 630px;
+}
+
+#task-list, #job-list{
+    height: 700px;
+    overflow: scroll;
+}
+
+#new-job-container {
+    width: 350px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 3em;
+    background-color:#28536c;
+    border-radius: 25px;
+    box-shadow: 7px 8px #032336;
+    color: #ffffff
+}
+#new-task-container{
+    width: 525px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 3em;
     background-color:#28536c;
     border-radius: 25px;
     box-shadow: 7px 8px #032336;
@@ -101,26 +175,23 @@ header{
 button, #edit-goal, #edit-scratchpad, .submit-button{
     border-radius: 25px;
     box-shadow: 3px 4px #032336;
-    height: 2rem;
+    height: 2em;
     width: auto;
 }
 
-li{
-    background-color:#FFFFFF;
-    border-radius: 25px;
-    box-shadow: 7px 8px #779EB3;
-    list-style-type: none;
-    padding: 10px 30px;
-    margin: 1rem;
-    width: auto;
-}
-
-.job-listing{
+li, #scratchpad-item{
     background-color:#FFFFFF;
     border-radius: 25px;
     box-shadow: 7px 8px #032336;
     list-style-type: none;
     padding: 10px 30px;
-    margin: 1rem;
+    margin: 1em 2em;
     width: auto;
+}
+
+.row-label{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20pt;
+    text-decoration: underline #03303B;
+    text-align: center; 
 }

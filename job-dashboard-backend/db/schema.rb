@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_07_10_190317) do
     t.string "title"
     t.string "status"
     t.text "description"
+    t.text "listing_notes"
     t.string "source"
     t.string "url"
     t.boolean "dream_job"
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_07_10_190317) do
     t.integer "user_id"
     t.integer "job_id"
     t.date "due_by"
+    t.boolean "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_tasks_on_job_id"
