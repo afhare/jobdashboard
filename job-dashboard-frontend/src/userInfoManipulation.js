@@ -61,7 +61,7 @@ function postNewGoal(newGoal, event){
 }
 
 function renderUpdateGoal(userData) {
-  document.querySelector("#user-goal").textContent = `Today's goal: ${userData.goal}` 
+  document.querySelector("#user-goal").textContent = userData.goal
 }
 
 
