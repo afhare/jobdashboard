@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded',()=>{
         handleUserLogin(event);
     })
 
+    document.querySelector('#logout-button').addEventListener('click', () => {
+        logIn();
+    })
+
     addBtn.addEventListener('click', () => {
         addJob = !addJob
         if (addJob) {
